@@ -1,5 +1,6 @@
 import React from "react";
 import heroImage from "../../assets/images/heroImg.jpg";
+import { Rides } from "../Rides/Rides.js";
 import classes from "./home.module.css";
 
 export const Home = () => {
@@ -30,6 +31,11 @@ export const Home = () => {
               </div>
             </div>
           </div>
+        </div>
+      </section>
+      <section className="py-5 mb-5">
+        <div className="container">
+          <Rides />
         </div>
       </section>
     </>

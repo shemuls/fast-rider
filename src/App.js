@@ -1,4 +1,4 @@
-import { createContext } from "react";
+import { createContext, useState, useEffect } from "react";
 import "./App.css";
 import { Body } from "./components/Body/Body.js";
 import { Footer } from "./components/Footer/Footer.js";
@@ -6,11 +6,17 @@ import { Header } from "./components/Header/Header.js";
 import { MainContent } from "./components/MainContent/MainContent.js";
 import "bootstrap/dist/css/bootstrap.min.css";
 import { BrowserRouter as Router } from "react-router-dom";
+import { RideElements } from "./fakeData/RideElements.js";
 
 export const FastRiderContext = createContext();
 function App() {
+  const [rides, setRides] = useState([]);
+  useEffect(() => {
+    setRides(RideElements);
+  }, []);
+
   return (
-    <FastRiderContext.Provider value={{ hi: "hi shemul" }}>
+    <FastRiderContext.Provider value={{ rides: rides }}>
       <Router>
         <Body>
           <Header />
