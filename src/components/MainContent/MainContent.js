@@ -1,7 +1,9 @@
 import React from "react";
 import { Switch, Route } from "react-router-dom";
+import { PrivateRoute } from "../../Auth/PrivateRoute.js";
+import { Home } from "../../pages/Home/Home.js";
+import { LoginPage } from "../../pages/Login/LoginPage.js";
 import { Destination } from "../Destination/Destination.js";
-import { Home } from "../Home/Home.js";
 
 export const MainContent = () => {
   return (
@@ -12,8 +14,21 @@ export const MainContent = () => {
       <Route exact path="/destination">
         <Destination />
       </Route>
+      <Route exact path="/login">
+        <LoginPage />
+      </Route>
+      <PrivateRoute path="/test">
+        <Destination />
+      </PrivateRoute>
+
       <Route exact path="*">
-        <h1 className="alert alert-danger p-5">404 erros...</h1>
+        <div className="container">
+          <div className="row">
+            <h1 className="alert alert-danger p-5 text-center my-5">
+              404 erros
+            </h1>
+          </div>
+        </div>
       </Route>
     </Switch>
   );

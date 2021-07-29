@@ -1,6 +1,6 @@
 import React from "react";
 import heroImage from "../../assets/images/heroImg.jpg";
-import { Rides } from "../Rides/Rides.js";
+import { Rides } from "../../components/Rides/Rides.js";
 import classes from "./home.module.css";
 
 export const Home = () => {

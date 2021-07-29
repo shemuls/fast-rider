@@ -15,8 +15,17 @@ function App() {
     setRides(RideElements);
   }, []);
 
+  const [singedUser, setSingedUser] = useState({
+    isSingedUser: false,
+    email: "",
+    displayName: "",
+    photoUrl: "",
+    error: "",
+    succes: "",
+  });
+
   return (
-    <FastRiderContext.Provider value={{ rides: rides }}>
+    <FastRiderContext.Provider value={{ rides: rides, singedUser: singedUser }}>
       <Router>
         <Body>
           <Header />
