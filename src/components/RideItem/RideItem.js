@@ -21,15 +21,15 @@ export const RideItem = ({ ride, selectRideHandler }) => {
     <div className="col-md-3">
       <div
         onClick={() => selectRideHandler(ride)}
-        className="shadow rounded p-5 cursor"
+        className="shadow rounded p-5 cursor text-center"
       >
         <img
-          className="m-auto d-block"
+          className="m-auto d-block mb-4"
           style={{ height: "120px" }}
           src={traffic}
-          alt=""
+          alt={traffic}
         />
-        <h2 className="text-capitalize">{ride}</h2>
+        <h3 className="text-capitalize">{ride}</h3>
       </div>
     </div>
   );

@@ -17,17 +17,17 @@ export const Header = () => {
               </NavLink>
             </li>
             <li className="nav-item">
-              <NavLink to="/" className="nav-link">
+              <NavLink to="/destination" className="nav-link">
                 Destination
               </NavLink>
             </li>
             <li className="nav-item">
-              <NavLink to="/" className="nav-link">
+              <NavLink to="/blog" className="nav-link">
                 Blog
               </NavLink>
             </li>
             <li className="nav-item">
-              <NavLink to="/" className="nav-link">
+              <NavLink to="/contact" className="nav-link">
                 Contact
               </NavLink>
             </li>
