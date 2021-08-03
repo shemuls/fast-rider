@@ -11,13 +11,10 @@ export const MainContent = () => {
       <Route exact path="/">
         <Home />
       </Route>
-      <Route exact path="/destination">
-        <Destination />
-      </Route>
       <Route exact path="/login">
         <LoginPage />
       </Route>
-      <PrivateRoute path="/test">
+      <PrivateRoute path="/destination">
         <Destination />
       </PrivateRoute>
 

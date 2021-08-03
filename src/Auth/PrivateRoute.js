@@ -3,8 +3,8 @@ import { Redirect, Route } from "react-router-dom";
 import { FastRiderContext } from "../App.js";
 
 export const PrivateRoute = ({ children, ...rest }) => {
-  const { singedUser } = useContext(FastRiderContext);
-  const isAuthenticated = singedUser.isSingedUser;
+  const { singedInUser } = useContext(FastRiderContext);
+  const isAuthenticated = singedInUser.isSingedUser;
   return (
     <Route
       {...rest}

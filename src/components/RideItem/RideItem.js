@@ -21,7 +21,7 @@ export const RideItem = ({ ride, selectRideHandler }) => {
     <div className="col-md-3">
       <div
         onClick={() => selectRideHandler(ride)}
-        className="shadow rounded p-5 cursor text-center"
+        className="shadow rounded p-5 cursor text-center rideItemBox"
       >
         <img
           className="m-auto d-block mb-4"

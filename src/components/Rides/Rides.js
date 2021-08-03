@@ -10,10 +10,11 @@ export const Rides = () => {
     history.push("/destination");
     console.log(selecetedRide);
   };
+  let i = 1;
   return (
     <div className="row">
       {rides.map((ride) => (
-        <RideItem ride={ride} selectRideHandler={selectRideHandler} />
+        <RideItem key={i++} ride={ride} selectRideHandler={selectRideHandler} />
       ))}
     </div>
   );

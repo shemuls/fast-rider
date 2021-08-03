@@ -1,8 +1,10 @@
-import React from "react";
+import { React, useContext } from "react";
 import { NavLink } from "react-router-dom";
 import logo from "../../assets/images/logo.png";
+import { FastRiderContext } from "../../App.js";
 
 export const Header = () => {
+  const { singedInUser } = useContext(FastRiderContext);
   return (
     <nav className="navbar navbar-expand-lg navbar-light bg-light">
       <div className="container">
@@ -10,6 +12,7 @@ export const Header = () => {
           <img src={logo} alt={logo} />
         </NavLink>
         <div>
+          <p>{singedInUser.email + " , " + singedInUser.displayName}</p>
           <ul className="navbar-nav">
             <li className="nav-item">
               <NavLink exact to="/" className="nav-link">
