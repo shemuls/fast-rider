@@ -1,11 +1,15 @@
-import { React, useContext } from "react";
+import { React, useContext, useState } from "react";
 import { FastRiderContext } from "../../App.js";
 import { firebaseInitializeApp, signInWithGoogle } from "../../Auth/Auth.js";
 import { Login } from "../../components/Form/Login";
+import { Register } from "../../components/Form/Register.js";
+import { ThirdPartyLogin } from "../../components/Form/ThirdPartyLogin.js";
 
 export const LoginPage = () => {
   firebaseInitializeApp();
   const { setSingedInUser } = useContext(FastRiderContext);
+
+  const [formPopup, setFormPopup] = useState(false);
 
   // Signin with google
   const loginWithGoogle = () => {
@@ -17,48 +21,30 @@ export const LoginPage = () => {
   return (
     <div className="container">
       <button onClick={() => loginWithGoogle()}>Google</button>
-      <Login />
       <div className="row my-5">
         <div className="col">
           <div className="card p-4 w-50 m-auto shadow">
             <div className="card-body">
-              <h4 className="mb-3">Create an account</h4>
-              <form className="myForm" action="">
-                <div className="form-group mb-4">
-                  <input
-                    type="text"
-                    className="form-control"
-                    placeholder="Name"
-                  />
-                </div>
-                <div className="form-group mb-4">
-                  <input
-                    type="text"
-                    className="form-control"
-                    placeholder="Email address"
-                  />
-                </div>
-                <div className="form-group mb-4">
-                  <input
-                    type="password"
-                    className="form-control"
-                    placeholder="Password"
-                  />
-                </div>
-                <div className="form-group mb-4">
-                  <input
-                    type="password"
-                    className="form-control"
-                    placeholder="Confirm Password"
-                  />
-                </div>
-                <div className="form-group mb-4">
-                  <button type="submit" className="btn btn-warning btn-block">
-                    <strong> Create a account</strong>{" "}
-                  </button>
-                </div>
-              </form>
+              {formPopup ? <Register /> : <Login />}
             </div>
+            <div className="my-card-footer text-center">
+              <p>
+                {formPopup
+                  ? "Already have an account?"
+                  : "Don't have an account? "}
+                <span
+                  onClick={() =>
+                    formPopup ? setFormPopup(false) : setFormPopup(true)
+                  }
+                  className="text-warning cursor"
+                >
+                  <strong> {formPopup ? "Login" : "Register"}</strong>
+                </span>
+              </p>
+            </div>
+          </div>
+          <div className="ThirdPartyLogin text-center mt-5">
+            <ThirdPartyLogin />
           </div>
         </div>
       </div>

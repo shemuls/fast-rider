@@ -12,7 +12,13 @@ export const Header = () => {
           <img src={logo} alt={logo} />
         </NavLink>
         <div>
-          <p>{singedInUser.email + " , " + singedInUser.displayName}</p>
+          <p>
+            {singedInUser.email +
+              " , " +
+              singedInUser.displayName +
+              " , " +
+              singedInUser.error}
+          </p>
           <ul className="navbar-nav">
             <li className="nav-item">
               <NavLink exact to="/" className="nav-link">
