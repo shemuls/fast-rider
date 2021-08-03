@@ -12,13 +12,6 @@ export const Header = () => {
           <img src={logo} alt={logo} />
         </NavLink>
         <div>
-          <p>
-            {singedInUser.email +
-              " , " +
-              singedInUser.displayName +
-              " , " +
-              singedInUser.error}
-          </p>
           <ul className="navbar-nav">
             <li className="nav-item">
               <NavLink exact to="/" className="nav-link">
@@ -43,12 +36,18 @@ export const Header = () => {
           </ul>
         </div>
         <div>
-          <NavLink
-            to="/login"
-            className="nav-link btn btn-warning btn-sm text-dark"
-          >
-            Login
-          </NavLink>
+          {singedInUser.email ? (
+            <p className="m-0">
+              Hi, <strong>{singedInUser?.displayName}</strong>
+            </p>
+          ) : (
+            <NavLink
+              to="/login"
+              className="nav-link btn btn-warning btn-sm text-dark"
+            >
+              Login
+            </NavLink>
+          )}
         </div>
       </div>
     </nav>
