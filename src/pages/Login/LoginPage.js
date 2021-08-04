@@ -1,4 +1,5 @@
 import { React, useContext, useState } from "react";
+import { useForm } from "react-hook-form";
 import { useHistory, useLocation } from "react-router-dom";
 import { FastRiderContext } from "../../App.js";
 import { firebaseInitializeApp, signInWithGoogle } from "../../Auth/Auth.js";
@@ -15,6 +16,15 @@ export const LoginPage = () => {
 
   const [formPopup, setFormPopup] = useState(false);
 
+  const {
+    handleSubmit,
+    register,
+    formState: { errors },
+  } = useForm();
+
+  // submitRegisterForm
+  const submitRegisterForm = (data) => {};
+
   // Signin with google
   const loginWithGoogle = () => {
     signInWithGoogle().then((res) => {
@@ -29,7 +39,16 @@ export const LoginPage = () => {
         <div className="col">
           <div className="card p-4 w-50 m-auto shadow">
             <div className="card-body">
-              {formPopup ? <Register /> : <Login />}
+              {formPopup ? (
+                <Register
+                  handleSubmit={handleSubmit}
+                  register={register}
+                  submitRegisterForm={submitRegisterForm}
+                  errors={errors}
+                />
+              ) : (
+                <Login />
+              )}
             </div>
             <div className="my-card-footer text-center">
               <p>
