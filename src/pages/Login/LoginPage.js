@@ -2,14 +2,18 @@ import { React, useContext, useState } from "react";
 import { useForm } from "react-hook-form";
 import { useHistory, useLocation } from "react-router-dom";
 import { FastRiderContext } from "../../App.js";
-import { firebaseInitializeApp, signInWithGoogle } from "../../Auth/Auth.js";
+import {
+  createUserWithEmailAndPassword,
+  firebaseInitializeApp,
+  signInWithGoogle,
+} from "../../Auth/Auth.js";
 import { Login } from "../../components/Form/Login";
 import { Register } from "../../components/Form/Register.js";
 import { ThirdPartyLogin } from "../../components/Form/ThirdPartyLogin.js";
 
 export const LoginPage = () => {
   firebaseInitializeApp();
-  const { setSingedInUser } = useContext(FastRiderContext);
+  const { singedInUser, setSingedInUser } = useContext(FastRiderContext);
   const location = useLocation();
   const { from } = location.state || { from: { pathname: "/" } };
   const history = useHistory();
@@ -20,10 +24,17 @@ export const LoginPage = () => {
     handleSubmit,
     register,
     formState: { errors },
+    reset,
   } = useForm();
 
   // submitRegisterForm
-  const submitRegisterForm = (data) => {};
+  const submitRegisterForm = (data) => {
+    createUserWithEmailAndPassword(data.email, data.password).then((res) => {
+      setSingedInUser(res);
+      res.isSingedUser && reset();
+      res.email && history.replace(from);
+    });
+  };
 
   // Signin with google
   const loginWithGoogle = () => {
@@ -32,6 +43,9 @@ export const LoginPage = () => {
       res.email && history.replace(from);
     });
   };
+
+  // Login with email password
+  const submitLoginFormHandle = () => {};
 
   return (
     <div className="container">
@@ -45,9 +59,16 @@ export const LoginPage = () => {
                   register={register}
                   submitRegisterForm={submitRegisterForm}
                   errors={errors}
+                  singedInUser={singedInUser}
                 />
               ) : (
-                <Login />
+                <Login
+                  handleSubmit={handleSubmit}
+                  register={register}
+                  submitLoginFormHandle={submitLoginFormHandle}
+                  errors={errors}
+                  singedInUser={singedInUser}
+                />
               )}
             </div>
             <div className="my-card-footer text-center">

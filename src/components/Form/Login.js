@@ -1,6 +1,12 @@
 import React from "react";
 
-export const Login = () => {
+export const Login = ({
+  handleSubmit,
+  register,
+  submitLoginFormHandle,
+  errors,
+  singedInUser,
+}) => {
   return (
     <>
       <h4 className="mb-3">Login</h4>

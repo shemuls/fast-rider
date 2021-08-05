@@ -5,9 +5,17 @@ export const Register = ({
   register,
   submitRegisterForm,
   errors,
+  singedInUser,
 }) => {
   return (
     <>
+      {singedInUser?.error && (
+        <p className="alert alert-danger">{singedInUser?.error}</p>
+      )}
+      {singedInUser?.success && (
+        <p className="alert alert-success">{singedInUser?.success}</p>
+      )}
+
       <h4 className="mb-3">Create an account</h4>
       <form
         onSubmit={handleSubmit(submitRegisterForm)}
@@ -43,12 +51,16 @@ export const Register = ({
           <input
             {...register("password", {
               required: "Password field is required!",
+              minLength: {
+                value: 6,
+                message: "Password must have at least 6 characters",
+              },
             })}
             type="password"
             className="form-control"
             placeholder="Password"
           />
-          {errors?.password?.type === "required" && (
+          {errors?.password?.message && (
             <p className="m-0 text-danger">{errors?.password?.message}</p>
           )}
         </div>

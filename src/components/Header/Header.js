@@ -38,7 +38,11 @@ export const Header = () => {
         <div>
           {singedInUser.email ? (
             <p className="m-0">
-              Hi, <strong>{singedInUser?.displayName}</strong>
+              Hi,{" "}
+              <strong>
+                {(singedInUser?.displayName && singedInUser?.displayName) ||
+                  "There"}
+              </strong>
             </p>
           ) : (
             <NavLink

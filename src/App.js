@@ -21,7 +21,7 @@ function App() {
     displayName: "",
     photoUrl: "",
     error: "",
-    succes: "",
+    success: "",
   });
 
   return (
