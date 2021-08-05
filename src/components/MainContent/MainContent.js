@@ -1,9 +1,9 @@
 import React from "react";
 import { Switch, Route } from "react-router-dom";
 import { PrivateRoute } from "../../Auth/PrivateRoute.js";
+import { DestinationPage } from "../../pages/DestinationPage/DestinationPage.js";
 import { Home } from "../../pages/Home/Home.js";
 import { LoginPage } from "../../pages/Login/LoginPage.js";
-import { Destination } from "../Destination/Destination.js";
 
 export const MainContent = () => {
   return (
@@ -15,7 +15,7 @@ export const MainContent = () => {
         <LoginPage />
       </Route>
       <PrivateRoute path="/destination">
-        <Destination />
+        <DestinationPage />
       </PrivateRoute>
 
       <Route exact path="*">

@@ -109,3 +109,28 @@ export const signInWithEmailAndPassword = (email, password) => {
       return setLoggedInUserData;
     });
 };
+
+// Sign Out
+export const signOut = () => {
+  return firebase
+    .auth()
+    .signOut()
+    .then(() => {
+      const setLoggedInUserData = {
+        isSingedUser: false,
+        email: "",
+        displayName: "",
+        photoUrl: "",
+        error: "",
+        success: "",
+      };
+      return setLoggedInUserData;
+    })
+    .catch((error) => {
+      const errorMessage = error.message;
+      const setLoggedInUserData = {
+        error: errorMessage,
+      };
+      return setLoggedInUserData;
+    });
+};

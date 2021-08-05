@@ -1,9 +1,9 @@
 import React from "react";
 
-export const Destination = () => {
+export const PickToMap = () => {
   return (
     <div>
-      <h2>destination</h2>
+      <h3>PickToMap.js</h3>
     </div>
   );
 };
