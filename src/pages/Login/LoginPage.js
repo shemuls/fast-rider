@@ -5,6 +5,7 @@ import { FastRiderContext } from "../../App.js";
 import {
   createUserWithEmailAndPassword,
   firebaseInitializeApp,
+  signInWithEmailAndPassword,
   signInWithGoogle,
 } from "../../Auth/Auth.js";
 import { Login } from "../../components/Form/Login";
@@ -45,7 +46,13 @@ export const LoginPage = () => {
   };
 
   // Login with email password
-  const submitLoginFormHandle = () => {};
+  const submitLoginFormHandle = (data) => {
+    signInWithEmailAndPassword(data.email, data.password).then((res) => {
+      setSingedInUser(res);
+      res.isSingedUser && reset();
+      res.email && history.replace(from);
+    });
+  };
 
   return (
     <div className="container">
