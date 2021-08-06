@@ -7,7 +7,8 @@ export const Rides = () => {
   const { rides } = useContext(FastRiderContext);
   const history = useHistory();
   const selectRideHandler = (selecetedRide) => {
-    history.push("/destination");
+    const url = `/destination/${selecetedRide}`;
+    history.push(url);
     console.log(selecetedRide);
   };
   let i = 1;

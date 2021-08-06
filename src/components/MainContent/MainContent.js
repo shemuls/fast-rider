@@ -14,7 +14,7 @@ export const MainContent = () => {
       <Route exact path="/login">
         <LoginPage />
       </Route>
-      <PrivateRoute path="/destination">
+      <PrivateRoute path="/destination/:rideItem">
         <DestinationPage />
       </PrivateRoute>
 
