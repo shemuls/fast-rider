@@ -1,22 +1,8 @@
 import React from "react";
-import bike from "../../assets/images/bike.png";
-import bus from "../../assets/images/bus.png";
-import car from "../../assets/images/car.png";
-import train from "../../assets/images/train.png";
+import { getRideitemImg } from "../../utilites/CustomFunctions.js";
 
 export const RideItem = ({ ride, selectRideHandler }) => {
-  let traffic = "";
-  if (ride === "car") {
-    traffic = car;
-  } else if (ride === "bike") {
-    traffic = bike;
-  } else if (ride === "bus") {
-    traffic = bus;
-  } else if (ride === "train") {
-    traffic = train;
-  } else {
-    traffic = "";
-  }
+  const rideItemUrl = getRideitemImg(ride);
   return (
     <div className="col-md-3">
       <div
@@ -26,8 +12,8 @@ export const RideItem = ({ ride, selectRideHandler }) => {
         <img
           className="m-auto d-block mb-4"
           style={{ height: "120px" }}
-          src={traffic}
-          alt={traffic}
+          src={rideItemUrl}
+          alt={rideItemUrl}
         />
         <h3 className="text-capitalize">{ride}</h3>
       </div>

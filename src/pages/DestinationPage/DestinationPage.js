@@ -5,6 +5,7 @@ import { AvailableRider } from "../../components/AvailableRider/AvailableRider.j
 import { DestinationDetails } from "../../components/DestinationDetails/DestinationDetails.js";
 import { DestinationForm } from "../../components/Form/DestinationForm.js";
 import { PickFormMap } from "../../components/Map/PickFormMap.js";
+import { getRideitemImg } from "../../utilites/CustomFunctions.js";
 
 export const DestinationPage = () => {
   const {
@@ -14,6 +15,7 @@ export const DestinationPage = () => {
     reset,
   } = useForm();
   const { rideItem } = useParams();
+  const rideItemImg = getRideitemImg(rideItem);
 
   const [distinationData, setDistinationData] = useState({});
 
@@ -39,6 +41,14 @@ export const DestinationPage = () => {
                     register={register}
                     errors={errors}
                     destinationFormHandle={destinationFormHandle}
+                  />
+                </div>
+
+                <div>
+                  <img
+                    src={rideItemImg}
+                    alt={rideItemImg}
+                    className="img-fluid p-5"
                   />
                 </div>
               </div>
