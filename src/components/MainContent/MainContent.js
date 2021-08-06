@@ -4,6 +4,7 @@ import { PrivateRoute } from "../../Auth/PrivateRoute.js";
 import { DestinationPage } from "../../pages/DestinationPage/DestinationPage.js";
 import { Home } from "../../pages/Home/Home.js";
 import { LoginPage } from "../../pages/Login/LoginPage.js";
+import { Rides } from "../Rides/Rides.js";
 
 export const MainContent = () => {
   return (
@@ -16,7 +17,11 @@ export const MainContent = () => {
       </Route>
 
       <Route exact path="/destination">
-        <LoginPage />
+        <div className="container">
+          <div className="row my-5 py-5">
+            <Rides />
+          </div>
+        </div>
       </Route>
 
       <PrivateRoute path="/destination/:rideItem">

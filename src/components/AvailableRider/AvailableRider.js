@@ -2,29 +2,15 @@ import { faUser } from "@fortawesome/free-solid-svg-icons";
 
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import React from "react";
-import bike from "../../assets/images/bike.png";
-import bus from "../../assets/images/bus.png";
-import car from "../../assets/images/car.png";
-import train from "../../assets/images/train.png";
+import { getRideitemImg } from "../../utilites/CustomFunctions.js";
 
 export const AvailableRider = ({ rideItem }) => {
-  let traffic = "";
-  if (rideItem === "car") {
-    traffic = car;
-  } else if (rideItem === "bike") {
-    traffic = bike;
-  } else if (rideItem === "bus") {
-    traffic = bus;
-  } else if (rideItem === "train") {
-    traffic = train;
-  } else {
-    traffic = "";
-  }
+  const rideItemUrl = getRideitemImg(rideItem);
 
   return (
     <ul className="list-group">
       <li className="list-group-item d-flex justify-content-between p-3 align-items-center list-group-item-action  ">
-        <img style={{ height: "40px" }} src={traffic} alt="" />
+        <img style={{ height: "40px" }} src={rideItemUrl} alt="" />
         <p className="m-0 text-capitalize">
           <strong> {rideItem}</strong>
         </p>
@@ -36,7 +22,7 @@ export const AvailableRider = ({ rideItem }) => {
         </p>
       </li>
       <li className="list-group-item d-flex justify-content-between p-3 align-items-center list-group-item-action list-group-item-light">
-        <img style={{ height: "40px" }} src={traffic} alt="" />
+        <img style={{ height: "40px" }} src={rideItemUrl} alt="" />
         <p className="m-0 text-capitalize">
           <strong> {rideItem}</strong>
         </p>
@@ -48,7 +34,7 @@ export const AvailableRider = ({ rideItem }) => {
         </p>
       </li>
       <li className="list-group-item d-flex justify-content-between p-3 align-items-center list-group-item-action ">
-        <img style={{ height: "40px" }} src={traffic} alt="" />
+        <img style={{ height: "40px" }} src={rideItemUrl} alt="" />
         <p className="m-0 text-capitalize">
           <strong> {rideItem}</strong>
         </p>

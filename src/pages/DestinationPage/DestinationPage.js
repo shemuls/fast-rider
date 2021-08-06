@@ -52,17 +52,16 @@ export const DestinationPage = () => {
                 <div className="card bg-white py-4 px-5 shadow my-4">
                   <AvailableRider rideItem={rideItem} />
                 </div>
+
+                <button
+                  onClick={backToSearchHandle}
+                  className="btn text-danger"
+                >
+                  <strong>-Back to search</strong>
+                </button>
               </div>
             </div>
           )}
-
-          <div className="row mt-4">
-            <div className="col">
-              <button onClick={backToSearchHandle} className="btn text-danger">
-                <strong>-Back to search</strong>
-              </button>
-            </div>
-          </div>
         </div>
         <div className="col-md-8">
           <PickFormMap />

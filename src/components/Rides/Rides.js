@@ -9,7 +9,6 @@ export const Rides = () => {
   const selectRideHandler = (selecetedRide) => {
     const url = `/destination/${selecetedRide}`;
     history.push(url);
-    console.log(selecetedRide);
   };
   let i = 1;
   return (
