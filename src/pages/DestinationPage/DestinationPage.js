@@ -58,7 +58,7 @@ export const DestinationPage = () => {
 
           <div className="row mt-4">
             <div className="col">
-              <button onClick={backToSearchHandle} className="btn">
+              <button onClick={backToSearchHandle} className="btn text-danger">
                 <strong>-Back to search</strong>
               </button>
             </div>
