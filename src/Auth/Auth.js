@@ -134,3 +134,67 @@ export const signOut = () => {
       return setLoggedInUserData;
     });
 };
+
+// Login with facebook
+export const loginWithFacebook = () => {
+  const provider = new firebase.auth.FacebookAuthProvider();
+  return firebase
+    .auth()
+    .signInWithPopup(provider)
+    .then((res) => {
+      const { displayName, email, photoURL } = res.user;
+      const setLoggedInUserData = {
+        isSingedUser: true,
+        email: email,
+        displayName: displayName,
+        photoUrl: photoURL,
+        error: "",
+        success: "Logged Successfully!",
+      };
+      return setLoggedInUserData;
+    })
+    .catch((error) => {
+      const errorMessage = error.message;
+      const setLoggedInUserData = {
+        isSingedUser: false,
+        email: "",
+        displayName: "",
+        photoUrl: "",
+        error: errorMessage,
+        success: "",
+      };
+      return setLoggedInUserData;
+    });
+};
+
+// Login with Github
+export const loginWithGithub = () => {
+  const provider = new firebase.auth.GithubAuthProvider();
+  return firebase
+    .auth()
+    .signInWithPopup(provider)
+    .then((res) => {
+      const { displayName, email, photoURL } = res.user;
+      const setLoggedInUserData = {
+        isSingedUser: true,
+        email: email,
+        displayName: displayName,
+        photoUrl: photoURL,
+        error: "",
+        success: "Logged Successfully!",
+      };
+      return setLoggedInUserData;
+    })
+    .catch((error) => {
+      const errorMessage = error.message;
+      const setLoggedInUserData = {
+        isSingedUser: false,
+        email: "",
+        displayName: "",
+        photoUrl: "",
+        error: errorMessage,
+        success: "",
+      };
+      return setLoggedInUserData;
+    });
+};

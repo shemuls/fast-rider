@@ -5,6 +5,8 @@ import { FastRiderContext } from "../../App.js";
 import {
   createUserWithEmailAndPassword,
   firebaseInitializeApp,
+  loginWithFacebook,
+  loginWithGithub,
   signInWithEmailAndPassword,
   signInWithGoogle,
 } from "../../Auth/Auth.js";
@@ -50,6 +52,21 @@ export const LoginPage = () => {
     signInWithEmailAndPassword(data.email, data.password).then((res) => {
       setSingedInUser(res);
       res.isSingedUser && reset();
+      res.email && history.replace(from);
+    });
+  };
+
+  // Login with facebook
+  const loginWithFacebookHandle = () => {
+    loginWithFacebook().then((res) => {
+      setSingedInUser(res);
+      res.email && history.replace(from);
+    });
+  };
+  // Login with Github
+  const loginWithGithubHandle = () => {
+    loginWithGithub().then((res) => {
+      setSingedInUser(res);
       res.email && history.replace(from);
     });
   };
@@ -108,7 +125,11 @@ export const LoginPage = () => {
                 .
               </div>
             </div>
-            <ThirdPartyLogin loginWithGoogle={loginWithGoogle} />
+            <ThirdPartyLogin
+              loginWithGoogle={loginWithGoogle}
+              loginWithFacebookHandle={loginWithFacebookHandle}
+              loginWithGithubHandle={loginWithGithubHandle}
+            />
           </div>
         </div>
       </div>
